@@ -1,4 +1,5 @@
--Create flutter application 
+-Create flutter application -done
+-Write the dart function that takes in 
 -Start with question 1 and question 2 
 -Switch branch answer Question 3 seperately 
 -Review files and commit files
