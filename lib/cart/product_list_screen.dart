@@ -48,7 +48,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               return IconButton(
                 onPressed: _openCart,
                 icon: Badge(
-                  label: Text('$count'),
+                  label: Text('Items $count'),
                   isLabelVisible: count > 0,
                   child: const Icon(Icons.shopping_cart),
                 ),
@@ -84,7 +84,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     trailing: quantity == 0
                         ? TextButton(
                             onPressed: () => widget.cart.add(product),
-                            child: const Text('Add'),
+                            child: const Text('Add an Item'),
                           )
                         : Row(
                             mainAxisSize: MainAxisSize.min,
