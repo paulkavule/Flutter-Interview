@@ -100,16 +100,3 @@ Build a product list and cart screen using supplied local product data. Show a c
 // Product fields: id, name, priceInMinorUnits, availableStock
 // Prices use integer minor units; do not calculate money using double.
 ```
-
-**Discussion extension:** How would you persist the cart, restore it safely, and prevent an older asynchronous save from overwriting a newer cart?
-
-## Final discussion: 5 minutes
-
-| Topic | Suggested question |
-| --- | --- |
-| Design decisions | Why did you choose this state-management approach? |
-| Verification | Which edge case would you test first, and why? |
-| Async behaviour | What happens if a request finishes after the user leaves the screen? |
-| Further development | What would you improve first if you had another 30 minutes? |
-
-Use two or three prompts that relate to the candidate's actual implementation. For the difficult task, assess reasoning and the working core behaviour alongside completion; do not require discussion extensions to be implemented.
