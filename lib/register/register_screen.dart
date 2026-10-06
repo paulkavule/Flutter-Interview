@@ -174,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   RadioListTile(
                     value: AccountType.business,
-                    title: Text('Business'),
+                    title: Text('Organisation'),
                   ),
                 ],
               ),
