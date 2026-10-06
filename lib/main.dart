@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dart_function/registration.dart';
 
 void main() {
   runApp(const MyApp());
@@ -101,32 +102,48 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
+          bottom: const TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.home_outlined), text: 'Home'),
+              Tab(
+                  icon: Icon(Icons.person_add_alt_1_outlined),
+                  text: 'Register'),
+            ],
+          ),
+        ),
+        body: TabBarView(
           children: [
-            Text('Input (${_bookings.length})',
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            Text(_bookings.toString()),
-            const Divider(height: 32),
-            Text('Output (${_merged.length})',
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            Text(_merged.toString()),
-            const SizedBox(height: 24),
-            Center(
-              child: ElevatedButton(
-                onPressed: _remerge,
-                child: const Text('Re-merge'),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Input (${_bookings.length})',
+                      style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Text(_bookings.toString()),
+                  const Divider(height: 32),
+                  Text('Output (${_merged.length})',
+                      style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Text(_merged.toString()),
+                  const SizedBox(height: 24),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: _remerge,
+                      child: const Text('Re-merge'),
+                    ),
+                  ),
+                ],
               ),
             ),
+            const RegistrationScreen(),
           ],
         ),
       ),
