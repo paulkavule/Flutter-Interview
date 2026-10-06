@@ -31,17 +31,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _submitting = false;
 
   List<TextEditingController> get _controllers => [
-        _firstName,
-        _lastName,
-        _businessName,
-        _registrationNumber,
-        _contactPerson,
-        _email,
-        _phone,
-        _username,
-        _password,
-        _confirmPassword,
-      ];
+    _firstName,
+    _lastName,
+    _businessName,
+    _registrationNumber,
+    _contactPerson,
+    _email,
+    _phone,
+    _username,
+    _password,
+    _confirmPassword,
+  ];
 
   @override
   void dispose() {
@@ -66,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String? _validatePhone(String? value) {
     if (value == null || value.trim().isEmpty) return 'Required';
     if (!RegExp(r'^\+?[0-9]{9,15}$').hasMatch(value.trim())) {
-      return 'Enter a valid phone number';
+      return 'Enter a Valid Phone number';
     }
     return null;
   }
@@ -123,8 +123,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       await showDialog<void>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Account created'),
-          content: Text('ID: ${result['id']}\nUsername: ${result['username']}'),
+          title: const Text('Account has been successfully created'),
+          content: Text('Username: ${result['username']}'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -141,9 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Registration failed. Check your connection and try again.'),
-        ),
+        const SnackBar(content: Text('Registration failed. Try again')),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
@@ -203,7 +201,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFormField(
                 controller: _registrationNumber,
-                decoration: const InputDecoration(labelText: 'Registration number'),
+                decoration: const InputDecoration(
+                  labelText: 'Registration number',
+                ),
                 textInputAction: TextInputAction.next,
                 validator: _required,
               ),
