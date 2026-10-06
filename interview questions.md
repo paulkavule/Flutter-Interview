@@ -24,7 +24,6 @@ The document contains four questions. Candidates complete three during the inter
 - Provide product data and the asynchronous search repository described in question 3. Provide basic screen scaffolding for both difficult options.
 - Verify access to the dummy API before the interview. If the public service is unavailable, provide a local equivalent and assess the same request/response behaviour.
 - Candidates may consult official documentation. Prioritize working behaviour and clear reasoning over visual polish.
-- Implement the requirements in each table. Extension topics are discussion prompts only; they are not additional coding requirements.
 - Use fictional registration details and a test password.
 
 ## Question 1: Merge overlapping booking intervals
