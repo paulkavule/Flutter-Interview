@@ -54,7 +54,7 @@ final class ProductRepositoryProvider
   }
 }
 
-String _$productRepositoryHash() => r'9618644e30ae8c6e8858191825d115d4a429dcb9';
+String _$productRepositoryHash() => r'd8e57c1b1a0f7a1afe26dd4c556203615a5125eb';
 
 @ProviderFor(searchProducts)
 final searchProductsProvider = SearchProductsProvider._();
@@ -95,7 +95,7 @@ final class SearchProductsProvider
   }
 }
 
-String _$searchProductsHash() => r'9adaa06395fe4e1b6e71b70ca19d39251bb19e28';
+String _$searchProductsHash() => r'530dc1f56c6edbb79e38ad62ce495ccc54e13645';
 
 @ProviderFor(SearchController)
 final searchControllerProvider = SearchControllerProvider._();

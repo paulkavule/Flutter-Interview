@@ -7,11 +7,10 @@ import '../../domain/usecases/search_products.dart';
 part 'search_provider.g.dart';
 
 @riverpod
-ProductRepositoryImpl productRepository(ProductRepositoryRef ref) =>
-    ProductRepositoryImpl();
+ProductRepositoryImpl productRepository(Ref ref) => ProductRepositoryImpl();
 
 @riverpod
-SearchProducts searchProducts(SearchProductsRef ref) =>
+SearchProducts searchProducts(Ref ref) =>
     SearchProducts(ref.watch(productRepositoryProvider));
 
 @riverpod
