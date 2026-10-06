@@ -1,0 +1,7 @@
+name: merge_intervals
+description: Merge overlapping booking intervals.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ^3.8.0
