@@ -1,7 +1,5 @@
 # Flutter Mid-Level Developer Interview
-
-**Duration:** 60 minutes  
-**Format:** Practical coding followed by a brief discussion  
+Practical coding followed by a brief description of what we have done. Abstracted 
 **Questions:** Complete questions 1 and 2, then choose either question 3 or question 4.
 
 The document contains four questions. Candidates complete three during the interview so there is time to assess both implementation and reasoning.
@@ -43,7 +41,7 @@ Output: [[1, 6], [8, 12]]
 **Time:** 20 minutes
 
 Build a registration screen for individual and business accounts. Submit valid data to the DummyJSON API using `http` or `Dio`.
-
+Use Minimalistic  design, use the white background with modern artistic feel, with Black White, Blue(Brand colour) and green success, red (danger)
 ### API details
 
 | Item | Value |
