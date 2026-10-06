@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
+import 'api/registration_api.dart';
+import 'screens/registration_screen.dart';
+
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp(api: RegistrationApi()));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, required this.api});
+
+  final RegistrationApi api;
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      title: 'Registration',
+      theme: ThemeData(colorSchemeSeed: Colors.indigo),
+      home: RegistrationScreen(api: api),
     );
   }
 }

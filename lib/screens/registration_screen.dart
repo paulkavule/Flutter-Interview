@@ -26,6 +26,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   bool get _isBusiness => _accountType == AccountType.business;
 
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _companyController.dispose();
+    super.dispose();
+  }
+
   String? _required(String? value, String label) {
     if (value == null || value.trim().isEmpty) return '$label is required';
     return null;
@@ -34,7 +44,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String? _validateEmail(String? value) {
     final error = _required(value, 'Email');
     if (error != null) return error;
-    if (!value!.trim().contains("@") || !value!.trim().contains(".")) return 'Enter a valid email';
+    if (!value!.trim().contains("@") || !value.trim().contains(".")) return 'Enter a valid email';
     return null;
   }
 
