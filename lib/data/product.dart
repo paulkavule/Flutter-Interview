@@ -1,3 +1,4 @@
+/// Supplied model and price formatter. Candidates must not modify this file.
 class Product {
   const Product({
     required this.id,
