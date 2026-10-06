@@ -64,7 +64,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
-            return const Center(child: Text('Could not load products'));
+            return const Center(child: Text('Could not load Product Items'));
           }
 
           final products = snapshot.data ?? [];
