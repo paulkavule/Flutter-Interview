@@ -1,19 +1,43 @@
 
-void main() {
-  final cases = <List<List<int>>>[
-    [[8, 10], [1, 3], [2, 6], [9, 12]],
-    [],
-    [[1, 4]],
-    [[1, 10], [2, 5]],
-    [[1, 3], [3, 5]],
-    [[5, 6], [1, 2]],
-  ];
+import 'dart:convert';
+import 'dart:io';
 
-  for (final input in cases) {
-    print('Input:  $input');
-    print('Output: ${mergeOverlappingIntervals(input)}');
-    print('');
+void main() {
+  print('Enter intervals as JSON, e.g. [[8,10],[1,3],[2,6]]');
+  print('Press Enter on an empty line (or Ctrl+D) to quit.\n');
+
+  while (true) {
+    stdout.write('> ');
+    final line = stdin.readLineSync();
+    if (line == null || line.trim().isEmpty) break;
+
+    try {
+      final input = parseIntervals(line);
+      print('Input:  $input');
+      print('Output: ${mergeOverlappingIntervals(input)}\n');
+    } on FormatException catch (e) {
+      print('Invalid input: ${e.message}\n');
+    }
   }
+}
+
+List<List<int>> parseIntervals(String raw) {
+  final decoded = jsonDecode(raw);
+  if (decoded is! List) {
+    throw const FormatException('Expected a list of intervals');
+  }
+
+  return decoded.map<List<int>>((item) {
+    if (item is! List || item.length != 2 || item.any((n) => n is! int)) {
+      throw FormatException('Each interval must be [start, end], got $item');
+    }
+    final start = item[0] as int;
+    final end = item[1] as int;
+    if (start > end) {
+      throw FormatException('Start must be <= end, got $item');
+    }
+    return [start, end];
+  }).toList();
 }
 
 List<List<int>> mergeOverlappingIntervals(List<List<int>> intervals) {
