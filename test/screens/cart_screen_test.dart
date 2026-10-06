@@ -1,14 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_cart/screens/cart_screen.dart';
+import 'package:shopping_cart/state/cart_model.dart';
 
 void main() {
-  group('CartScreen', () {
-    testWidgets('shows empty state when cart is empty (R5)', (tester) async {},
-        skip: true);
+  testWidgets('shows empty cart message', (tester) async {
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (_) => CartModel(),
+        child: const MaterialApp(home: CartScreen()),
+      ),
+    );
 
-    testWidgets('shows line totals, subtotal, discount and total (R4)',
-        (tester) async {}, skip: true);
-
-    testWidgets('cart contents survive navigating back and forth (R5)',
-        (tester) async {}, skip: true);
+    expect(find.text('Your cart is empty'), findsOneWidget);
   });
 }

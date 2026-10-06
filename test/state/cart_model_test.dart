@@ -1,21 +1,39 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shopping_cart/data/products.dart';
+import 'package:shopping_cart/state/cart_model.dart';
 
 void main() {
-  group('CartModel', () {
-    test('adding the same product twice increases quantity (R1)', () {},
-        skip: true);
+  test('adding same product increases quantity', () {
+    final cart = CartModel();
+    cart.add(sampleProducts[0]);
+    cart.add(sampleProducts[0]);
 
-    test('products with zero stock cannot be added (R2)', () {}, skip: true);
+    expect(cart.lines.length, 1);
+    expect(cart.itemCount, 2);
+  });
 
-    test('quantity cannot go above available stock (R2)', () {}, skip: true);
+  test('cannot add more than available stock', () {
+    final cart = CartModel();
+    cart.add(sampleProducts[1]);
+    cart.add(sampleProducts[1]);
+    cart.add(sampleProducts[1]);
 
-    test('quantity cannot go below one (R2)', () {}, skip: true);
+    expect(cart.itemCount, 2);
+  });
 
-    test('remove deletes the line (R2)', () {}, skip: true);
+  test('cannot add out of stock product', () {
+    final cart = CartModel();
+    cart.add(sampleProducts[3]);
 
-    test('item count is the sum of quantities (R3)', () {}, skip: true);
+    expect(cart.isEmpty, true);
+  });
 
-    test('totals apply a rounded 10% discount to the subtotal (R4)', () {},
-        skip: true);
+  test('calculates 10% discount', () {
+    final cart = CartModel();
+    cart.add(sampleProducts[2]);
+
+    expect(cart.subtotalInMinorUnits, 3455);
+    expect(cart.discountInMinorUnits, 346);
+    expect(cart.totalInMinorUnits, 3109);
   });
 }
