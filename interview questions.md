@@ -14,8 +14,7 @@ The document contains four questions. Candidates complete three during the inter
 | Question 1: Algorithm — medium | 10 minutes |
 | Question 2: Registration form and API integration — medium | 20 minutes |
 | Question 3 or 4: Advanced Flutter task — difficult | 20 minutes |
-| Code walkthrough and discussion | 5 minutes |
-| **Total** | **60 minutes** |
+| **Total** | **55 minutes** |
 
 ## Preparation and candidate instructions
 
