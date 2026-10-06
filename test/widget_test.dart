@@ -1,30 +1,29 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:product_search/data/product.dart';
+import 'package:product_search/data/product_repository.dart';
 import 'package:product_search/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets('tapping outside dismisses the search keyboard', (tester) async {
+    await tester.pumpWidget(ProductSearchApp(repository: _TestRepository()));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.byType(TextField));
+    await tester.pump();
+
+    EditableText input = tester.widget(find.byType(EditableText));
+    expect(input.focusNode.hasFocus, isTrue);
+
+    await tester.tap(find.text('Products'));
+    await tester.pump();
+
+    input = tester.widget(find.byType(EditableText));
+    expect(input.focusNode.hasFocus, isFalse);
   });
+}
+
+class _TestRepository extends ProductRepository {
+  @override
+  Future<List<Product>> searchProducts(String query) async => const [];
 }

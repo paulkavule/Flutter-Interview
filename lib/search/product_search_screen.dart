@@ -3,6 +3,7 @@ import '../data/product.dart';
 import '../data/product_repository.dart';
 import 'product_search_controller.dart';
 
+// Screen for searching products
 class ProductSearchScreen extends StatefulWidget {
   const ProductSearchScreen({super.key, required this.repository});
 
@@ -37,6 +38,8 @@ class _ProductSearchScreenState extends State<ProductSearchScreen> {
             padding: const EdgeInsets.all(16),
             child: TextField(
               onChanged: _searchController.updateQuery,
+              onTapOutside: (_) =>
+                  FocusManager.instance.primaryFocus?.unfocus(),
               textInputAction: TextInputAction.search,
               decoration: const InputDecoration(
                 labelText: 'Search products',
@@ -57,6 +60,7 @@ class _ProductSearchScreenState extends State<ProductSearchScreen> {
     );
   }
 
+  // Build the content of the screen
   Widget _buildContent() {
     switch (_searchController.status) {
       case ProductSearchStatus.loading:
@@ -92,6 +96,7 @@ class _ProductSearchScreenState extends State<ProductSearchScreen> {
   }
 }
 
+// Product tile for the screen
 class _ProductTile extends StatelessWidget {
   const _ProductTile({required this.product});
 
@@ -110,6 +115,7 @@ class _ProductTile extends StatelessWidget {
   }
 }
 
+// Message state for the screen
 class _MessageState extends StatelessWidget {
   const _MessageState({
     required this.icon,

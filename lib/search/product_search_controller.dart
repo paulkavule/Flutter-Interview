@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:product_search/data/product.dart';
+import 'package:product_search/data/product_repository.dart';
 
-import '../data/product.dart';
-import '../data/product_repository.dart';
+
 
 enum ProductSearchStatus { loading, results, empty, error }
 
@@ -14,7 +15,7 @@ class ProductSearchController extends ChangeNotifier {
   }) : _repository = repository {
     _runSearch();
   }
-
+/// Repository for product search
   final ProductRepository _repository;
   final Duration debounceDuration;
 
@@ -44,12 +45,14 @@ class ProductSearchController extends ChangeNotifier {
     _debounce = Timer(debounceDuration, _runSearch);
   }
 
+  /// Retry the search
   void retry() {
     _debounce?.cancel();
     _requestVersion++;
     _runSearch();
   }
 
+  /// Run the search
   Future<void> _runSearch() async {
     final version = ++_requestVersion;
     final searchedQuery = _query;
@@ -77,6 +80,7 @@ class ProductSearchController extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Dispose the controller
   @override
   void dispose() {
     _disposed = true;
