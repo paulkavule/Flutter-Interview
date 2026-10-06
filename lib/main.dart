@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shop',
+      title: 'My E-Shop',
       home: ProductListScreen(repository: widget.repository, cart: _cart),
     );
   }
