@@ -26,4 +26,24 @@ void main() {
 
     expect(find.text('Business name'), findsOneWidget);
   });
+
+  testWidgets('products can be added to and removed from the cart',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Products'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byTooltip('Add Pour-over set to cart'));
+    await tester.pump();
+    expect(find.text('1 in cart'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Open cart'));
+    await tester.pumpAndSettle();
+    expect(find.text('Your cart'), findsOneWidget);
+    expect(find.text('\$38.00'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Remove one Pour-over set'));
+    await tester.pumpAndSettle();
+    expect(find.text('Your cart is empty'), findsOneWidget);
+  });
 }

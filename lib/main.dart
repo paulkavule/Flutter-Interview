@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dart_function/registration.dart';
+import 'package:dart_function/products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -111,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.home_outlined), text: 'Home'),
+              Tab(icon: Icon(Icons.storefront_outlined), text: 'Products'),
               Tab(
                   icon: Icon(Icons.person_add_alt_1_outlined),
                   text: 'Register'),
@@ -143,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+            const ProductsScreen(),
             const RegistrationScreen(),
           ],
         ),
