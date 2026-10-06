@@ -26,6 +26,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   static final _endpoint = Uri.parse('https://dummyjson.com/users/add');
 
+
   @override
   void dispose() {
     _firstNameController.dispose();
@@ -42,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
     return null;
   }
-
+// Validate the email
   String? _email(String? value) {
     final requiredError = _required(value, 'Email');
     if (requiredError != null) return requiredError;
@@ -50,6 +51,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return null;
   }
 
+  // Validate the password
   String? _password(String? value) {
     final requiredError = _required(value, 'Password');
     if (requiredError != null) return requiredError;
@@ -57,6 +59,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return null;
   }
 
+  // Submit the form
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -119,6 +122,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Register')),
+      // Form for the registration
       body: Form(
         key: _formKey,
         child: ListView(
