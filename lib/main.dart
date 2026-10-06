@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'data/product_repository.dart';
-import 'search/product_search_screen.dart';
+import 'register/register_screen.dart';
+import 'register/registration_service.dart';
 
 void main() {
-  runApp(ProductSearchApp(repository: ProductRepository()));
+  runApp(MyApp(service: RegistrationService()));
 }
 
-class ProductSearchApp extends StatelessWidget {
-  const ProductSearchApp({super.key, required this.repository});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, required this.service});
 
-  final ProductRepository repository;
+  final RegistrationService service;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Product Search',
-      theme: ThemeData(colorSchemeSeed: Colors.indigo),
-      home: ProductSearchScreen(repository: repository),
+      title: 'Registration',
+      home: RegisterScreen(service: service),
     );
   }
 }
