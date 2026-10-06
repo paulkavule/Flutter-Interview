@@ -1,4 +1,21 @@
 
+void main() {
+  final cases = <List<List<int>>>[
+    [[8, 10], [1, 3], [2, 6], [9, 12]],
+    [],
+    [[1, 4]],
+    [[1, 10], [2, 5]],
+    [[1, 3], [3, 5]],
+    [[5, 6], [1, 2]],
+  ];
+
+  for (final input in cases) {
+    print('Input:  $input');
+    print('Output: ${mergeOverlappingIntervals(input)}');
+    print('');
+  }
+}
+
 List<List<int>> mergeOverlappingIntervals(List<List<int>> intervals) {
   // Return empty list if intervals is empty
   if (intervals.isEmpty) return [];
